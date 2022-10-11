@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 
 import {
     FnService,
@@ -78,6 +78,7 @@ export class RoadmDeviceComponent extends TableBaseImpl implements OnInit, OnDes
     public picUrl6='https://pic3.zhimg.com/80/v2-74026d6b34f82eb5ab4b504c2ec93ed1_720w.jpg?source=d16d100b';
     public picUrl7='https://pic1.zhimg.com/80/v2-cab6ca8b44b6dd126804e23fe013e8a7_720w.jpg?source=d16d100b';
 
+    public reveal:boolean=false;
 
     constructor(
         protected fs: FnService,
@@ -106,6 +107,12 @@ export class RoadmDeviceComponent extends TableBaseImpl implements OnInit, OnDes
         };
     }
 
+    show_out() {
+        this.reveal = !this.reveal;
+    }
+
+
+
     ngOnInit() {
         this.init();
         this.log.debug('RoadmDeviceComponent initialized');
@@ -126,5 +133,9 @@ export class RoadmDeviceComponent extends TableBaseImpl implements OnInit, OnDes
             this.router.navigate([path], { queryParams: { devId: this.selId } });
         }
     }
+    ngAfterViewInit(){
 
+
+
+    }
 }
